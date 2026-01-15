@@ -1,11 +1,20 @@
 import sys
 
 def spocitej_statistiku(text):
+
+    if not text:
+        return 0, 0, 0
+    
     pocet_radku = 0
     pocet_slov = 0
     pocet_znaku = 0
 
     # ZDE DOPLŇTE VÁŠ KÓD
+    pocet_radku = len(text.splitlines())
+
+    pocet_slov = len(text.split())
+
+    pocet_znaku = len(text)
 
     return pocet_radku, pocet_slov, pocet_znaku
 
@@ -25,7 +34,8 @@ if __name__ == "__main__":
 
         # načtěte data ze vstupního souboru (jméno souboru je v proměnné `vstupni_soubor`)    
         # ZDE DOPLŇTE VÁŠ KÓD
-        obsah = ""
+        with open(vstupni_soubor, "r") as file:
+            obsah = file.read()
     
         pocet_radku, pocet_slov, pocet_znaku = spocitej_statistiku(obsah)
 
@@ -35,6 +45,10 @@ if __name__ == "__main__":
         # Pocet slov: Y
         # Pocet znaku: Z
         # ZDE DOPLŇTE VÁŠ KÓD
+        with open(vystupni_soubor, "w") as file:
+            file.write(f"Pocet radku: {pocet_radku}\n")
+            file.write(f"Pocet slov: {pocet_slov}\n")
+            file.write(f"Pocet znaku: {pocet_znaku}")
 
         # volitelne info pro uzivatele
         print("Statistika byla ulozena do souboru", vystupni_soubor)

@@ -17,8 +17,51 @@ def statistika(rezim, cisla):
     """
 
     # ZDE DOPLŇTE VÁŠ KÓD
-    pass
+    if rezim == "soucet":
+        secteno = 0
+        for n in cisla:
+            secteno += n
+        return secteno
 
+    elif rezim == "pocet":
+         celkem = 0
+         for n in cisla:
+             celkem += 1
+         return celkem
+    
+    elif rezim == "max":
+        if not cisla:
+            return None
+        else:
+            max = cisla[0]
+            for n in cisla:
+                if n > max:
+                    max = n
+        return max 
+    
+    elif rezim == "min":
+        if not cisla:
+            return None
+        else:
+            min = cisla[0]
+            for n in cisla:
+                if n < min:
+                    min = n
+        return min
+    
+    elif rezim == "prumer":
+        if not cisla:
+            return None
+        else:
+            soucet = 0
+            pocet = 0
+            prumer = 0
+            for n in cisla:
+                soucet += n
+            for n in cisla:
+                pocet += 1
+            prumer = soucet / pocet
+            return prumer
 
 def test_statistika():
     assert statistika("soucet", [1, 2, 3, 4]) == 10
